@@ -1,0 +1,33 @@
+.circle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 530px;
+	height: 530px;
+	border-radius: 50%;
+	border: 1px solid rgba(66, 86, 122, 0.2);
+	overflow: visible;
+
+	.point {
+		cursor: pointer;
+		position: absolute;
+		width: 6px;
+		height: 6px;
+		background-color: #42567a;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.current {
+		cursor: pointer;
+		position: absolute;
+		background-color: #f4f5f9;
+		border: 1px solid rgba(48, 62, 88, 0.5);
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 20px;
+		line-height: 30px;
+		padding: 13px 23px;
+	}
+}
