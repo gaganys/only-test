@@ -10,6 +10,7 @@
 	overflow: visible;
 
 	.point {
+		z-index: 2;
 		cursor: pointer;
 		position: absolute;
 		width: 6px;
@@ -20,6 +21,7 @@
 	}
 
 	.current {
+		z-index: 2;
 		cursor: pointer;
 		position: absolute;
 		background-color: #f4f5f9;
@@ -29,5 +31,15 @@
 		font-size: 20px;
 		line-height: 30px;
 		padding: 13px 23px;
+
+		.category {
+			position: absolute;
+			top: 50%;
+			transform: translate(55px, -50%); /* маленький отступ + центрирование */
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 30px;
+			color: #42567a;
+		}
 	}
 }
