@@ -1,0 +1,21 @@
+.dates {
+	display: flex;
+	gap: 70px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	& > div {
+		font-size: 180px;
+		font-weight: 700;
+	}
+
+	.leftSide {
+		color: #3877ee;
+	}
+
+	.rightSide {
+		color: #ef5da8;
+	}
+}

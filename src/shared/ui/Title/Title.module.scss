@@ -1,0 +1,23 @@
+.gradientLine {
+	position: absolute;
+	top: 30px;
+	left: 240px;
+	height: 120px;
+	width: 5px;
+	background: #ef5da8;
+	background: linear-gradient(
+		0deg,
+		rgba(239, 93, 168, 1) 0%,
+		rgba(56, 119, 238, 1) 100%
+	);
+}
+
+.title {
+	position: absolute;
+	top: 20px;
+	left: 320px;
+	font-size: 56px;
+	line-height: 120%;
+	font-weight: 700;
+	color: #42567a;
+}

@@ -1,0 +1,32 @@
+.pagination {
+	position: absolute;
+	top: 50%;
+	transform: translateY(220px);
+	left: 320px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	font-size: 14px;
+
+	.arrows {
+		display: flex;
+		gap: 20px;
+
+		& > div {
+			cursor: pointer;
+			height: 50px;
+			width: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid rgba(66, 86, 122, 0.5);
+			border-radius: 50%;
+		}
+
+		.disabled {
+			cursor: default;
+			border-color: rgba(66, 86, 122, 0.5);
+			color: rgba(66, 86, 122, 0.5);
+		}
+	}
+}
