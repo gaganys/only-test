@@ -1,10 +1,21 @@
+import { pointsList } from '../../api/points'
 import styles from './Dates.module.scss'
 
-const Dates = () => {
+const Dates = ({ currentPoint }: { currentPoint: number }) => {
+	const currentPointData = pointsList.find(
+		point => point.number === currentPoint
+	)
+
+	if (!currentPointData) return null
+
 	return (
 		<div className={styles.dates}>
-			<div className={styles.leftSide}>2015</div>
-			<div className={styles.rightSide}>2022</div>
+			<div className={`${styles.leftSide} startDate`}>
+				{currentPointData.startDate}
+			</div>
+			<div className={`${styles.rightSide} endDate`}>
+				{currentPointData.endDate}
+			</div>
 		</div>
 	)
 }

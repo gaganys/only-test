@@ -20,7 +20,7 @@ const MainPage = () => {
 			</div>
 
 			<Title />
-			<Dates />
+			<Dates currentPoint={currentPoint} />
 			<Pagination
 				currentPoint={currentPoint}
 				setCurrentPoint={setCurrentPoint}

@@ -1,8 +1,8 @@
+import gsap from 'gsap'
 import React from 'react'
+import { pointsList } from '../../api/points'
 import { onPointClickAnimation } from '../../ui/Animation/Animation'
 import styles from './Circle.module.scss'
-
-const CATEGORIES_LIST = ['', 'Кино', 'Литература', '', '', 'Наука']
 
 type CircleProps = {
 	currentPoint: number
@@ -22,15 +22,16 @@ const Circle = ({
 	setCurrentRotation,
 }: CircleProps) => {
 	const wrapperRef = React.useRef<HTMLDivElement>(null)
+	const pointsRefs = React.useRef<(HTMLDivElement | null)[]>([])
+
 	const [center, setCenter] = React.useState<{ x: number; y: number }>({
 		x: 0,
 		y: 0,
 	})
 
 	const pointsCoordinates: { x: number; y: number; number: number }[] = []
-	const radius = 240
-	const numberOfPoints = 6
-	const stepAngle = 360 / numberOfPoints
+	const radius = 210
+	const stepAngle = 360 / pointsList.length
 	const targetIndex = 5 // фиксированное "гнездо" точки 6
 
 	React.useEffect(() => {
@@ -44,8 +45,8 @@ const Circle = ({
 	}, [])
 
 	// Вычисляем координаты всех точек на круге
-	for (let i = 0; i < numberOfPoints; i++) {
-		const angle = (i * 2 * Math.PI) / numberOfPoints
+	for (let i = 0; i < pointsList.length; i++) {
+		const angle = (i * 2 * Math.PI) / pointsList.length
 		const x = center.x + radius * Math.cos(angle)
 		const y = center.y + radius * Math.sin(angle)
 		pointsCoordinates.push({ x, y, number: i + 1 })
@@ -80,8 +81,42 @@ const Circle = ({
 				setCurrentRotation(newRotation)
 				setCurrentPoint(n)
 				setVisiblePoint(n)
-			}
+			},
+			currentPoint,
+			n
 		)
+	}
+
+	const handleHoverEnter = (index: number) => {
+		const point = pointsRefs.current[index]
+		if (!point) return
+
+		if (index + 1 !== currentPoint) {
+			gsap.to(point, {
+				width: 56,
+				height: 56,
+				backgroundColor: '#f4f5f9',
+				border: '1px solid rgba(48, 62, 88, 0.5)',
+				duration: 0.3,
+				ease: 'power2.out',
+			})
+		}
+	}
+
+	const handleHoverLeave = (index: number) => {
+		const point = pointsRefs.current[index]
+		if (!point) return
+
+		if (index + 1 !== currentPoint) {
+			gsap.to(point, {
+				width: 6,
+				height: 6,
+				backgroundColor: '#42567a',
+				border: 'none',
+				duration: 0.3,
+				ease: 'power2.out',
+			})
+		}
 	}
 
 	return (
@@ -90,6 +125,9 @@ const Circle = ({
 				return (
 					<div
 						key={point.number}
+						ref={el => {
+							pointsRefs.current[point.number - 1] = el
+						}}
 						data-number={point.number}
 						className={`${
 							currentPoint === point.number ? 'currentPoint' : 'point'
@@ -99,6 +137,8 @@ const Circle = ({
 							top: `${point.y}px`,
 						}}
 						onClick={e => onPointClick(point.number, e.currentTarget)}
+						onMouseEnter={() => handleHoverEnter(point.number - 1)}
+						onMouseLeave={() => handleHoverLeave(point.number - 1)}
 					>
 						<div
 							className={styles.content}
@@ -107,10 +147,11 @@ const Circle = ({
 							}}
 						>
 							{visiblePoint === point.number && point.number}
-							<span className={styles.category}>
-								{visiblePoint === point.number &&
-									CATEGORIES_LIST[point.number - 1]}
-							</span>
+							{visiblePoint === point.number && (
+								<span className={styles.category}>
+									{pointsList[point.number - 1]?.category}
+								</span>
+							)}
 						</div>
 					</div>
 				)

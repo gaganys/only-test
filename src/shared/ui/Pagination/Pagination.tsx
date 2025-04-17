@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import React from 'react'
-import { onPointClickAnimation } from '../../ui/Animation/Animation'
+import { pointsList } from '../../api/points'
+import { onPointClickAnimation } from '../Animation/Animation'
 import styles from './Pagination.module.scss'
 
 type PaginationProps = {
@@ -34,9 +35,7 @@ const Pagination = ({
 
 		setVisiblePoint(null)
 
-		const numberOfPoints = 6
-		const radius = 240
-		const stepAngle = 360 / numberOfPoints
+		const stepAngle = 360 / pointsList.length
 		const targetIndex = 5 // всегда точка 6
 
 		const clickedIndex = nextPoint - 1
@@ -55,11 +54,19 @@ const Pagination = ({
 		if (!target) return
 
 		// Анимация
-		onPointClickAnimation(wrapper, allPoints, target, newRotation, () => {
-			setCurrentRotation(newRotation)
-			setCurrentPoint(nextPoint)
-			setVisiblePoint(nextPoint)
-		})
+		onPointClickAnimation(
+			wrapper,
+			allPoints,
+			target,
+			newRotation,
+			() => {
+				setCurrentRotation(newRotation)
+				setCurrentPoint(nextPoint)
+				setVisiblePoint(nextPoint)
+			},
+			currentPoint,
+			nextPoint
+		)
 	}
 
 	return (

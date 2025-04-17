@@ -3,11 +3,12 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 480px;
-	height: 480px;
+	width: 420px;
+	height: 420px;
 	border-radius: 50%;
 	border: 1px solid rgba(66, 86, 122, 0.2);
 	overflow: visible;
+	z-index: 5;
 
 	.point {
 		z-index: 2;
@@ -21,7 +22,7 @@
 	}
 
 	.current {
-		z-index: 2;
+		z-index: 10;
 		cursor: pointer;
 		position: absolute;
 		background-color: #f4f5f9;
