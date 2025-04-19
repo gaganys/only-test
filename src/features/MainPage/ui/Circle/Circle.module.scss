@@ -1,10 +1,8 @@
 .circle {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	position: relative;
 	width: 420px;
 	height: 420px;
+	margin-top: -60px;
 	border-radius: 50%;
 	border: 1px solid rgba(66, 86, 122, 0.2);
 	overflow: visible;
@@ -36,7 +34,7 @@
 		.category {
 			position: absolute;
 			top: 50%;
-			transform: translate(55px, -50%); /* маленький отступ + центрирование */
+			transform: translate(40px, -50%);
 			font-size: 20px;
 			font-weight: 700;
 			line-height: 30px;

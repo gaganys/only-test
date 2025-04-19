@@ -1,4 +1,4 @@
-import { pointsList } from '../../api/points'
+import { pointsList } from '../../../../shared/api/points'
 import styles from './Dates.module.scss'
 
 const Dates = ({ currentPoint }: { currentPoint: number }) => {

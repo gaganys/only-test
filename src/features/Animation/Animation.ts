@@ -1,5 +1,5 @@
 import gsap from 'gsap'
-import { pointsList } from '../../api/points'
+import { pointsList } from '../../shared/api/points'
 
 export const onPointClickAnimation = (
 	wrapper: HTMLDivElement,
@@ -12,7 +12,6 @@ export const onPointClickAnimation = (
 ) => {
 	const others = allPoints.filter(el => el !== targetPoint)
 
-	// Получаем данные о датах
 	const currentPointData = pointsList.find(
 		point => point.number === currentPoint
 	)
@@ -95,4 +94,3 @@ export const onPointClickAnimation = (
 		)
 	}
 }
-

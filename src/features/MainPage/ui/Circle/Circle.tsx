@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import React from 'react'
-import { pointsList } from '../../api/points'
-import { onPointClickAnimation } from '../../ui/Animation/Animation'
+import { pointsList } from '../../../../shared/api/points'
+import { onPointClickAnimation } from '../../../Animation/Animation'
 import styles from './Circle.module.scss'
 
 type CircleProps = {

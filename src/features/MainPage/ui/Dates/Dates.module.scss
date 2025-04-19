@@ -1,10 +1,11 @@
 .dates {
 	display: flex;
+	justify-content: center;
 	gap: 70px;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: calc(50% - 30px);
+
+	transform: translateY(-50%);
 	z-index: 1;
 	pointer-events: none;
 

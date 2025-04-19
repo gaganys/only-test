@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import React from 'react'
-import { pointsList } from '../../api/points'
-import { onPointClickAnimation } from '../Animation/Animation'
+import { pointsList } from '../../../../shared/api/points'
+import { onPointClickAnimation } from '../../../Animation/Animation'
 import styles from './Pagination.module.scss'
 
 type PaginationProps = {

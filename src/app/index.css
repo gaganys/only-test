@@ -5,5 +5,10 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'PT Sans', sans-serif;
-	
+}
+
+body,
+html,
+#root {
+	min-height: calc(100vh + 200px);
 }
